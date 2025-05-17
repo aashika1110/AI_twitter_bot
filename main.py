@@ -2,9 +2,14 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from reply_engine import generate_reply
 from twitter_client import post_reply
-from sentiment import get_sentiment  # Optional – still in use for comparison if needed
+from sentiment import get_sentiment
 
 app = FastAPI()
+
+# 👇 Add this health check route
+@app.get("/")
+async def root():
+    return {"status": "ok", "message": "FastAPI server running"}
 
 class TweetData(BaseModel):
     text: str
