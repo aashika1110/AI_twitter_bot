@@ -1,4 +1,7 @@
 import streamlit as st
+import os
+os.environ["PORT"] = os.environ.get("PORT", "8501")
+
 from reply_engine import generate_reply
 from sentiment import get_sentiment
 
